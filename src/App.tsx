@@ -1,24 +1,21 @@
-
-import logo from './logo.svg';
+import { useState } from "react";
+import HangmanDrawing from "./components/HangmanDrawing";
+import HangmanWord from "./components/HangmanWord";
+import Keyboard from "./components/Keyboard";
+import word from './wordList.json'
 
 function App() {
+  const [wordToGuess, setWordToGuess] = useState(() => word[Math.floor(Math.random() * word.length)])
+  const [guessLetters, setGuessLetters] = useState<string[]>([])
+  console.log(wordToGuess)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div>Hello world!</div>
+      <HangmanDrawing/>
+      <HangmanWord/>
+      <Keyboard/>
+    </>
   );
 }
 
