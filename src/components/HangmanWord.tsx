@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import styles from './HangmanWord.module.css'
 
 interface hangmanWordProps {
   wordToGuess: string
@@ -19,17 +20,9 @@ export default function HangmanWord({
   console.log(lettersGuest)
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        gap: '.5rem',
-        fontSize: '2rem',
-        fontWeight: 'bold',
-        textTransform: 'uppercase',
-      }}
-    >
+    <div className={styles.wordContainer}>
       {wordToGuess.split('').map((el, i) => (
-        <span style={{ borderBottom: '4px solid black' }} key={i}>
+        <span className={styles.wordBottom} key={i}>
           {!lettersGuest?.includes(el.toUpperCase()) ? (
             <span style={{ opacity: '0' }}>{i % 2 === 0 ? 'H' : 'A'}</span>
           ) : (
