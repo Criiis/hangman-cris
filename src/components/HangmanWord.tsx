@@ -9,10 +9,9 @@ export default function HangmanWord({
   wordToGuess,
   letterGuessed,
 }: hangmanWordProps) {
-  const word = wordToGuess
-  console.log('🚀 ~ file: HangmanWord.tsx ~ line 13 ~ word', word)
   const [lettersGuest, setLettersGuest] = useState(letterGuessed)
 
+  //update word
   useEffect(() => {
     setLettersGuest(letterGuessed)
   }, [letterGuessed])
@@ -29,7 +28,7 @@ export default function HangmanWord({
         textTransform: 'uppercase',
       }}
     >
-      {word.split('').map((el, i) => (
+      {wordToGuess.split('').map((el, i) => (
         <span style={{ borderBottom: '4px solid black' }} key={i}>
           {!lettersGuest?.includes(el.toUpperCase()) ? (
             <span style={{ opacity: '0' }}>{i % 2 === 0 ? 'H' : 'A'}</span>
