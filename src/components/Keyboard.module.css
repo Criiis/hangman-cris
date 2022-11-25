@@ -31,16 +31,7 @@
   transition: 0.2s;
 }
 
-.btn.active {
-  /* background-color: hsl(200, 100%, 50%); */
-  /* color: white; */
-}
-
 .btn.inactive {
-  opacity: 0.3;
-}
-
-.btn:hover:not(:disabled),
-.btn:focus:not(:disabled) {
-  /* background-color: hsl(200, 100%, 75%); */
+  pointer-events: none;
+  opacity: 0.5;
 }
