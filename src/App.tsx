@@ -10,14 +10,19 @@ function App() {
     () => word[Math.floor(Math.random() * word.length)]
   )
   const [guessLetters, setGuessLetters] = useState<string[]>([])
-  console.log(wordToGuess)
+
+  const letterClick = (letter: string) => {
+    const letterUpper = letter.toUpperCase()
+    if (guessLetters.includes(letterUpper)) return
+    setGuessLetters((prev) => [...prev, letterUpper])
+  }
 
   return (
     <div className={styles.app}>
       <div>Lose Win</div>
       <HangmanDrawing />
-      <HangmanWord wordToGuess={wordToGuess} />
-      <Keyboard />
+      <HangmanWord wordToGuess={wordToGuess} letterGuessed={guessLetters} />
+      <Keyboard letterClick={letterClick} />
     </div>
   )
 }

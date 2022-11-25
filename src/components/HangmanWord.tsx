@@ -1,6 +1,23 @@
-export default function HangmanWord() {
-  const word = 'HangmanWord'
-  const wordGuest: string[] = []
+import { useEffect, useState } from 'react'
+
+interface hangmanWordProps {
+  wordToGuess: string
+  letterGuessed: string[]
+}
+
+export default function HangmanWord({
+  wordToGuess,
+  letterGuessed,
+}: hangmanWordProps) {
+  const word = wordToGuess
+  console.log('🚀 ~ file: HangmanWord.tsx ~ line 13 ~ word', word)
+  const [lettersGuest, setLettersGuest] = useState(letterGuessed)
+
+  useEffect(() => {
+    setLettersGuest(letterGuessed)
+  }, [letterGuessed])
+
+  console.log(lettersGuest)
 
   return (
     <div
@@ -14,10 +31,10 @@ export default function HangmanWord() {
     >
       {word.split('').map((el, i) => (
         <span style={{ borderBottom: '4px solid black' }} key={i}>
-          {!wordGuest?.includes(el.toUpperCase()) ? (
+          {!lettersGuest?.includes(el.toUpperCase()) ? (
             <span style={{ opacity: '0' }}>{i % 2 === 0 ? 'H' : 'A'}</span>
           ) : (
-            <span>{wordGuest?.includes(el.toUpperCase()) ? el : ''}</span>
+            <span>{lettersGuest?.includes(el.toUpperCase()) ? el : ''}</span>
           )}
         </span>
       ))}
