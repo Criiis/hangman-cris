@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState } from 'react'
 import HangmanDrawing from './components/HangmanDrawing'
 import HangmanWord from './components/HangmanWord'
 import Keyboard from './components/Keyboard'
@@ -15,10 +15,7 @@ function App() {
   const [wordLetter] = useState(wordToGuess.toUpperCase().split(''))
 
   //get only the incorrect letters
-  const incorrectLetters = useMemo(
-    () => guessLetters.filter((el) => !wordLetter.includes(el)),
-    [guessLetters, wordLetter]
-  )
+  const incorrectLetters = guessLetters.filter((el) => !wordLetter.includes(el))
 
   //click event for screen keyboard
   const letterClick = (letter: string) => {
@@ -32,7 +29,7 @@ function App() {
       <div>Lose Win</div>
       <HangmanDrawing incorrectGuesses={incorrectLetters} />
       <HangmanWord wordToGuess={wordToGuess} letterGuessed={guessLetters} />
-      <Keyboard letterClick={letterClick} letterGuessed={guessLetters}/>
+      <Keyboard letterClick={letterClick} letterGuessed={guessLetters} />
     </div>
   )
 }
