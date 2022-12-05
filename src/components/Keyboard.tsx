@@ -2,6 +2,7 @@ import { useState } from 'react'
 import styles from './Keyboard.module.css'
 interface KeyboardProps {
   letterClick: (letter: string) => void
+  letterGuessed: string[]
 }
 const keys = [
   'Q',
@@ -32,19 +33,17 @@ const keys = [
   'm',
 ]
 
-export default function Keyboard({ letterClick }: KeyboardProps) {
-  const [keyboardController, setKeyboardController] = useState<string[]>([])
-
+export default function Keyboard({
+  letterClick,
+  letterGuessed,
+}: KeyboardProps) {
   return (
     <div className={styles.keyboardContainer}>
       {keys.map((key) => (
         <button
-          onClick={() => {
-            setKeyboardController((prev) => [...prev, key.toUpperCase()])
-            letterClick(key)
-          }}
+          onClick={() => letterClick(key)}
           className={`${styles.btn} ${
-            keyboardController.includes(key.toUpperCase())
+            letterGuessed.includes(key.toUpperCase())
               ? styles.inactive
               : styles.active
           }`}
