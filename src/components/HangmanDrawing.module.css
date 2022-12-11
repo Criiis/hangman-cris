@@ -1,0 +1,41 @@
+.gallowsContainer {
+  position: relative;
+  height: 350px;
+  width: 250px;
+}
+
+.gallowsBase {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 60%;
+  height: 5px;
+  background: black;
+}
+
+.gallowsPole {
+  position: absolute;
+  bottom: 0px;
+  left: calc(30% - 5px);
+  width: 5px;
+  height: 100%;
+  background: black;
+}
+
+.gallowsHanger {
+  position: absolute;
+  top: 0px;
+  left: 30%;
+  width: 30%;
+  height: 5px;
+  background: black;
+}
+
+.gallowsHangerEnd {
+  position: absolute;
+  top: 0px;
+  left: 60%;
+  width: 5px;
+  height: 35px;
+  background: black;
+}
