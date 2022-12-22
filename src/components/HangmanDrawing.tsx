@@ -4,34 +4,36 @@ interface HangmanDrawingProps {
 }
 
 const GallowsBase = () => {
-  return <span className={styles.gallowsBase}></span>
+  return <span key="gallowsBase" className={styles.gallowsBase}></span>
 }
 const GallowsPole = () => {
-  return <span className={styles.gallowsPole}></span>
+  return <span key="gallowsPole" className={styles.gallowsPole}></span>
 }
 const GallowsHanger = () => {
-  return <span className={styles.gallowsHanger}></span>
+  return <span key="gallowsHanger" className={styles.gallowsHanger}></span>
 }
 const GallowsHangerEnd = () => {
-  return <span className={styles.gallowsHangerEnd}></span>
+  return (
+    <span key="gallowsHangerEnd" className={styles.gallowsHangerEnd}></span>
+  )
 }
 const Head = () => {
-  return <span className={styles.bodyHead}></span>
+  return <span key="bodyHead" className={styles.bodyHead}></span>
 }
 const TopBody = () => {
-  return <span className={styles.topBody}></span>
+  return <span key="topBody" className={styles.topBody}></span>
 }
 const LeftArm = () => {
-  return <span className={styles.leftArm}></span>
+  return <span key="leftArm" className={styles.leftArm}></span>
 }
 const RightArm = () => {
-  return <span className={styles.rightArm}></span>
+  return <span key="rightArm" className={styles.rightArm}></span>
 }
 const LeftLeg = () => {
-  return <span className={styles.leftLeg}></span>
+  return <span key="leftLeg" className={styles.leftLeg}></span>
 }
 const RightLeg = () => {
-  return <span className={styles.rightLeg}></span>
+  return <span key="rightLeg" className={styles.rightLeg}></span>
 }
 
 const bodyParts = [
