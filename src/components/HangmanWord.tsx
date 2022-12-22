@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import styles from './HangmanWord.module.css'
 
 interface hangmanWordProps {

@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import styles from './Keyboard.module.css'
 interface KeyboardProps {
   letterClick: (letter: string) => void
