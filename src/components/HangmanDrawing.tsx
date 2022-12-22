@@ -3,35 +3,58 @@ interface HangmanDrawingProps {
   incorrectGuesses: string[]
 }
 
-const Gallows = () => {
-  return (
-    <>
-      <span className={styles.gallowsHangerEnd}></span>
-      <span className={styles.gallowsHanger}></span>
-      <span className={styles.gallowsPole}></span>
-      <span className={styles.gallowsBase}></span>
-    </>
-  )
+const GallowsBase = () => {
+  return <span className={styles.gallowsBase}></span>
 }
-const body = () => {
-  return <h1>body</h1>
+const GallowsPole = () => {
+  return <span className={styles.gallowsPole}></span>
+}
+const GallowsHanger = () => {
+  return <span className={styles.gallowsHanger}></span>
+}
+const GallowsHangerEnd = () => {
+  return <span className={styles.gallowsHangerEnd}></span>
+}
+const Head = () => {
+  return <span className={styles.bodyHead}></span>
+}
+const TopBody = () => {
+  return <span className={styles.topBody}></span>
+}
+const LeftArm = () => {
+  return <span className={styles.leftArm}></span>
+}
+const RightArm = () => {
+  return <span className={styles.rightArm}></span>
+}
+const LeftLeg = () => {
+  return <span className={styles.leftLeg}></span>
+}
+const RightLeg = () => {
+  return <span className={styles.rightLeg}></span>
 }
 
-const header = () => {
-  return <h1>head</h1>
-}
+const bodyParts = [
+  GallowsBase(),
+  GallowsPole(),
+  GallowsHanger(),
+  GallowsHangerEnd(),
+  Head(),
+  TopBody(),
+  LeftArm(),
+  RightArm(),
+  LeftLeg(),
+  RightLeg(),
+]
 
 export default function HangmanDrawing({
   incorrectGuesses,
 }: HangmanDrawingProps) {
-  const hangman = [body, header]
-  console.log('incorrectGuesses', incorrectGuesses)
-  console.log(hangman[1]())
+  const incorrectGuessesLength = incorrectGuesses.length
+
   return (
     <div className={styles.gallowsContainer}>
-      {/* {incorrectGuesses.length} */}
-
-      <Gallows />
+      {bodyParts.slice(0, incorrectGuessesLength)}
     </div>
   )
 }

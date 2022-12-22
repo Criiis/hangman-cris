@@ -1,14 +1,14 @@
 .gallowsContainer {
   position: relative;
-  height: 350px;
-  width: 250px;
+  height: 250px;
+  width: 230px;
 }
 
 .gallowsBase {
   position: absolute;
   bottom: 0px;
   left: 0px;
-  width: 60%;
+  width: 50%;
   height: 5px;
   background: black;
 }
@@ -16,7 +16,7 @@
 .gallowsPole {
   position: absolute;
   bottom: 0px;
-  left: calc(30% - 5px);
+  left: calc(25% - 5px);
   width: 5px;
   height: 100%;
   background: black;
@@ -25,7 +25,7 @@
 .gallowsHanger {
   position: absolute;
   top: 0px;
-  left: 30%;
+  left: 25%;
   width: 30%;
   height: 5px;
   background: black;
@@ -34,8 +34,71 @@
 .gallowsHangerEnd {
   position: absolute;
   top: 0px;
-  left: 60%;
+  left: 55%;
   width: 5px;
-  height: 35px;
+  height: 25px;
   background: black;
+}
+
+.bodyHead {
+  position: absolute;
+  top: 25px;
+  left: calc(55% - 17.5px);
+  width: 30px;
+  height: 30px;
+  border: 5px solid black;
+  border-radius: 50%;
+}
+
+.topBody {
+  position: absolute;
+  top: 65px;
+  left: 55%;
+  width: 5px;
+  height: 70px;
+  background: black;
+}
+
+.leftArm {
+  position: absolute;
+  top: 75px;
+  left: 55%;
+  width: 5px;
+  height: 45px;
+  background: black;
+  transform-origin: top;
+  transform: rotateZ(25deg);
+}
+
+.rightArm {
+  position: absolute;
+  top: 75px;
+  left: 55%;
+  width: 5px;
+  height: 45px;
+  background: black;
+  transform-origin: top;
+  transform: rotateZ(-25deg);
+}
+
+.leftLeg {
+  position: absolute;
+  top: 135px;
+  left: 55%;
+  width: 5px;
+  height: 45px;
+  background: black;
+  transform-origin: top;
+  transform: rotateZ(25deg);
+}
+
+.rightLeg {
+  position: absolute;
+  top: 135px;
+  left: 55%;
+  width: 5px;
+  height: 45px;
+  background: black;
+  transform-origin: top;
+  transform: rotateZ(-25deg);
 }
