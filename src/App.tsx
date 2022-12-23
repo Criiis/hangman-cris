@@ -1,19 +1,21 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import HangmanDrawing from './components/HangmanDrawing'
 import HangmanWord from './components/HangmanWord'
 import Keyboard from './components/Keyboard'
 import word from './wordList.json'
 import styles from './App.module.css'
 
+const gettingWord = (): string => word[Math.floor(Math.random() * word.length)]
+
 function App() {
-  const [wordToGuess] = useState(
-    () => word[Math.floor(Math.random() * word.length)]
-  )
+  const [wordToGuess, setWordToGuess] = useState<string>(gettingWord())
   const [guessLetters, setGuessLetters] = useState<string[]>([])
 
   //check the incorrect letter
-  const [wordLetter] = useState(Array.from(wordToGuess.toUpperCase()))
-  console.log(Array.from(wordToGuess.toUpperCase()))
+  const wordLetter = useMemo(
+    () => Array.from(wordToGuess.toUpperCase()),
+    [wordToGuess]
+  )
 
   //get only the incorrect letters
   const incorrectLetters = guessLetters.filter((el) => !wordLetter.includes(el))
@@ -30,6 +32,11 @@ function App() {
     setGuessLetters((prev) => [...prev, letterUpper])
   }
 
+  const resetFunctionality = () => {
+    setGuessLetters([])
+    setWordToGuess(gettingWord())
+  }
+
   return (
     <div className={styles.app}>
       <h1>Hangman Game</h1>
@@ -38,6 +45,7 @@ function App() {
       <HangmanDrawing incorrectGuesses={incorrectLetters} />
       <HangmanWord wordToGuess={wordToGuess} letterGuessed={guessLetters} />
       <Keyboard letterClick={letterClick} letterGuessed={guessLetters} />
+      <button onClick={resetFunctionality}>Reset game</button>
     </div>
   )
 }
