@@ -56,7 +56,7 @@ function App() {
       {(isLoser || isWinner) && (
         <Modal>
           <h1 className="title">
-            {isLoser ? 'YOU CAN DO BETTER!' : wordToGuess.toUpperCase()}
+            {isLoser ? 'YOU CAN DO BETTER...' : wordToGuess.toUpperCase()}
           </h1>
           {isLoser && (
             <p>Try again, the correct word was: {wordToGuess.toUpperCase()}!</p>
