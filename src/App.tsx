@@ -7,6 +7,7 @@ import styles from './App.module.css'
 import Modal from './components/ui/Modal'
 
 const gettingWord = (): string => word[Math.floor(Math.random() * word.length)]
+const maxChances = 10
 
 function App() {
   const [wordToGuess, setWordToGuess] = useState<string>(gettingWord())
@@ -22,8 +23,11 @@ function App() {
   const incorrectLetters = guessLetters.filter((el) => !wordLetter.includes(el))
 
   //check winner or loser
-  const isLoser = incorrectLetters.length >= 10
+  const isLoser = incorrectLetters.length >= maxChances
   const isWinner = wordLetter.every((letter) => guessLetters.includes(letter))
+
+  //chances left to lose the game
+  const chancesToGuess = maxChances - incorrectLetters.length
 
   //click event for screen keyboard
   const letterClick = (letter: string) => {
@@ -45,18 +49,19 @@ function App() {
         <h1>Hangman Game</h1>
         <HangmanDrawing incorrectGuesses={incorrectLetters} />
         <HangmanWord wordToGuess={wordToGuess} letterGuessed={guessLetters} />
+        <p style={{ margin: 0 }}>Chances left {chancesToGuess}</p>
         <Keyboard letterClick={letterClick} letterGuessed={guessLetters} />
       </div>
 
       {(isLoser || isWinner) && (
         <Modal>
-          <h1 className="title">{isLoser ? 'LOSER' : 'WINNER'}</h1>
+          <h1 className="title">
+            {isLoser ? 'YOU CAN DO BETTER!' : wordToGuess.toUpperCase()}
+          </h1>
           {isLoser && (
-            <p>Try again, the correct word was: {wordToGuess.toUpperCase()}</p>
+            <p>Try again, the correct word was: {wordToGuess.toUpperCase()}!</p>
           )}
-          {isWinner && (
-            <p>Well done, you guessed it right: {wordToGuess.toUpperCase()}</p>
-          )}
+          {isWinner && <p>Well done, you smashed it!</p>}
           <button className="reset-button" onClick={resetFunctionality}>
             Reset game
           </button>
