@@ -4,12 +4,14 @@ import HangmanWord from './components/HangmanWord'
 import Keyboard from './components/Keyboard'
 import word from './wordList.json'
 import styles from './App.module.css'
+import Modal from './components/ui/Modal'
 
 const gettingWord = (): string => word[Math.floor(Math.random() * word.length)]
 
 function App() {
   const [wordToGuess, setWordToGuess] = useState<string>(gettingWord())
   const [guessLetters, setGuessLetters] = useState<string[]>([])
+
 
   //check the incorrect letter
   const wordLetter = useMemo(
@@ -32,21 +34,30 @@ function App() {
     setGuessLetters((prev) => [...prev, letterUpper])
   }
 
+  //reset functionality for app
   const resetFunctionality = () => {
     setGuessLetters([])
     setWordToGuess(gettingWord())
   }
 
   return (
-    <div className={styles.app}>
-      <h1>Hangman Game</h1>
-      {isLoser && <h3>GAME OVER! Please reload the page.</h3>}
-      {isWinner && <h3>YOU WON! Please reload the page.</h3>}
-      <HangmanDrawing incorrectGuesses={incorrectLetters} />
-      <HangmanWord wordToGuess={wordToGuess} letterGuessed={guessLetters} />
-      <Keyboard letterClick={letterClick} letterGuessed={guessLetters} />
-      <button onClick={resetFunctionality}>Reset game</button>
-    </div>
+    <>
+      <div className={styles.app}>
+        <h1>Hangman Game</h1>
+        <HangmanDrawing incorrectGuesses={incorrectLetters} />
+        <HangmanWord wordToGuess={wordToGuess} letterGuessed={guessLetters} />
+        <Keyboard letterClick={letterClick} letterGuessed={guessLetters} />
+      </div>
+
+      {(isLoser || isWinner) && (
+        <Modal>
+          <h1 className="title">{isLoser ? 'LOSER' : 'WINNER'}</h1>
+          <button className="button-86" onClick={resetFunctionality}>
+            Reset game
+          </button>
+        </Modal>
+      )}
+    </>
   )
 }
 
