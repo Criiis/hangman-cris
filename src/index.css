@@ -16,13 +16,8 @@ code {
   position: relative;
 }
 
-
-
-
-
-
 /* CSS */
-.button-86 {
+.reset-button {
   all: unset;
   width: 100px;
   height: 30px;
@@ -43,17 +38,17 @@ code {
   touch-action: manipulation;
 }
 
-.button-86::after,
-.button-86::before {
+.reset-button::after,
+.reset-button::before {
   content: '';
   position: absolute;
   bottom: 0;
   right: 0;
   z-index: -99999;
-  transition: all .4s;
+  transition: all 0.4s;
 }
 
-.button-86::before {
+.reset-button::before {
   transform: translate(0%, 0%);
   width: 100%;
   height: 100%;
@@ -61,7 +56,7 @@ code {
   border-radius: 10px;
 }
 
-.button-86::after {
+.reset-button::after {
   transform: translate(10px, 10px);
   width: 35px;
   height: 35px;
@@ -71,20 +66,20 @@ code {
   border-radius: 50px;
 }
 
-.button-86:hover::before {
+.reset-button:hover::before {
   transform: translate(5%, 20%);
   width: 110%;
   height: 110%;
 }
 
-.button-86:hover::after {
+.reset-button:hover::after {
   border-radius: 10px;
   transform: translate(0, 0);
   width: 100%;
   height: 100%;
 }
 
-.button-86:active::after {
+.reset-button:active::after {
   transition: 0s;
   transform: translate(0, 5%);
 }

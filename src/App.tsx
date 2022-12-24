@@ -12,7 +12,6 @@ function App() {
   const [wordToGuess, setWordToGuess] = useState<string>(gettingWord())
   const [guessLetters, setGuessLetters] = useState<string[]>([])
 
-
   //check the incorrect letter
   const wordLetter = useMemo(
     () => Array.from(wordToGuess.toUpperCase()),
@@ -52,7 +51,13 @@ function App() {
       {(isLoser || isWinner) && (
         <Modal>
           <h1 className="title">{isLoser ? 'LOSER' : 'WINNER'}</h1>
-          <button className="button-86" onClick={resetFunctionality}>
+          {isLoser && (
+            <p>Try again, the correct word was: {wordToGuess.toUpperCase()}</p>
+          )}
+          {isWinner && (
+            <p>Well done, you guessed it right: {wordToGuess.toUpperCase()}</p>
+          )}
+          <button className="reset-button" onClick={resetFunctionality}>
             Reset game
           </button>
         </Modal>

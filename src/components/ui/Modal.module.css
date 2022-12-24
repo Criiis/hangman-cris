@@ -12,10 +12,10 @@
 
 .modal {
   position: absolute;
-  width: auto;
+  width: 100%;
   max-width: 80vw;
   min-width: 50vw;
-  height: auto;
+  height: 100vh;
   min-height: 40vh;
   max-height: 60vh;
   overflow-x: auto;
@@ -42,8 +42,12 @@
   transform: translate(-50%, 50%);
   animation: slide-down 300ms ease-out forwards;
 }
-.modal h1 {
-  margin: 0 0 1.5rem 0;
+.modal h1,
+.modal p {
+  margin: 0 0 0.2rem 0;
+}
+.modal button {
+  margin: 1.5rem 0 0 0;
 }
 
 @keyframes slide-down {
