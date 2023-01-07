@@ -1,10 +1,12 @@
-import { useState, useMemo } from 'react'
+import React, { useState, useMemo } from 'react'
+
 import HangmanDrawing from './components/HangmanDrawing'
 import HangmanWord from './components/HangmanWord'
 import Keyboard from './components/Keyboard'
 import word from './wordList.json'
 import styles from './App.module.css'
 import Modal from './components/ui/Modal'
+import { Helmet } from 'react-helmet'
 
 const gettingWord = (): string => word[Math.floor(Math.random() * word.length)]
 const maxChances = 10
@@ -45,6 +47,11 @@ function App() {
 
   return (
     <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Hangman game</title>
+      </Helmet>
+
       <div className={styles.app}>
         <h1>Hangman Game</h1>
         <HangmanDrawing incorrectGuesses={incorrectLetters} />
